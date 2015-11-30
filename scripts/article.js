@@ -8,5 +8,6 @@ var Article = function(props){
 };
 
 Article.prototype.toHtml = function () {
+  
 
 };

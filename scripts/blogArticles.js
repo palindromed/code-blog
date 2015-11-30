@@ -1,4 +1,4 @@
-
+$(function(){
   blog.rawData = [
     {
       title:       'Bacon Ipsum',
@@ -170,3 +170,6 @@
 
     },
   ];
+
+  makePosts();
+});
