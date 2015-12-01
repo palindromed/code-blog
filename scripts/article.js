@@ -6,6 +6,7 @@ var Article = function(props){
   this.body = props.body;
   this.publishedOn = props.publishedOn;
   this.authorUrl = props.authorUrl;
+  this.daysBetween = props.daysBetween;
 };
 
 Article.prototype.toHtml = function () {
