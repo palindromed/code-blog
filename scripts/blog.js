@@ -1,11 +1,8 @@
 'use strict';
-var Blog = function() {
-  this.self = {};
-};
 
-var blog = new Blog;
+var blog = {};
 
-Blog.prototype.makePosts = function(){
+blog.makePosts = function(){
   for(var i=0; i < blog.rawData.length; i++){
     var post = blog.rawData[i];
     post.daysBetween = blog.dateDiff(post.publishedOn);
@@ -14,7 +11,7 @@ Blog.prototype.makePosts = function(){
   }
 };
 
-Blog.prototype.dateDiff = function(date1){
+blog.dateDiff = function(date1){
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth()+1;
@@ -30,11 +27,12 @@ Blog.prototype.dateDiff = function(date1){
 
   today = yyyy +'-'+ mm+'-'+dd;
 
-  var year = parseInt(date1.slice(0, [4]));
-  var month = parseInt(date1.slice(5, [7]));
-  var day = parseInt(date1.slice(-2));
-  var monthDiff = (mm-month) * 30;
-  var dayDiff = (dd-day) + monthDiff;
+  var msDiff = today - date1;
+  var dayDiff = msDiff / ;
   return(dayDiff);
 
 };
+// ms /1000/60/60/24
+$(function () {
+  blog.makePosts();
+});
