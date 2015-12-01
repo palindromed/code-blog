@@ -28,11 +28,11 @@ blog.dateDiff = function(date1){
   today = yyyy +'-'+ mm+'-'+dd;
 
   var msDiff = today - date1;
-  var dayDiff = msDiff / ;
+  var dayDiff = msDiff / 86400000;
   return(dayDiff);
 
 };
-// ms /1000/60/60/24
+
 $(function () {
   blog.makePosts();
 });
