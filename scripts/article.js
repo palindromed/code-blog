@@ -11,10 +11,10 @@ var Article = function(props){
 
 Article.prototype.toHtml = function () {
   var $clone = $(' .template').filter(':first').clone(true);
-  var authorInfo = 'By ' + this.author + ' published about ' + this.daysBetween + ' days ago.';
+  var authorInfo = 'By  <a href="'+ this.authorUrl + '" >'+ this.author + '</a> published about ' + this.daysBetween + ' days ago.';
   $clone.find('.about').html(authorInfo);
   $clone.find('.body').html(this.body);
   $clone.find('.title').html(this.title);
-  $clone.find('a[href]').attr('href', this.authorUrl);
+  //$clone.find('a[href]').attr('href', this.authorUrl);
   $('.main').append($clone);
 };
