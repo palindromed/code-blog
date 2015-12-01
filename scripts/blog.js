@@ -27,12 +27,14 @@ blog.dateDiff = function(date1){
 
   today = yyyy +'-'+ mm+'-'+dd;
 
-  var msDiff = today - date1;
-  var dayDiff = msDiff / 86400000;
+  var year = parseInt(date1.slice(0, [4]));
+  var month = parseInt(date1.slice(5, [7]));
+  var day = parseInt(date1.slice(-2));
+  var monthDiff = (mm-month) * 30;
+  var dayDiff = (dd-day) + monthDiff;
   return(dayDiff);
 
 };
-
 $(function () {
-  blog.makePosts();
+blog.makePosts();
 });
