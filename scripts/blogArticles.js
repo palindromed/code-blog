@@ -171,5 +171,5 @@ $(function(){
     },
   ];
 
-  makePosts();
+  blog.makePosts();
 });
