@@ -11,6 +11,18 @@ blog.makePosts = function(){
   }
 };
 
+blog.sortArticles = function (argument) {
+  blog.rawData.sort(function (a, b) {
+  if (a.value > b.value) {
+    return 1;
+  }
+  if (a.value < b.value) {
+    return -1;
+  }
+  return 0;
+});
+}
+
 blog.dateDiff = function(date1){
   var today = new Date();
   var dd = today.getDate();
@@ -32,7 +44,24 @@ blog.dateDiff = function(date1){
   return(dayDiff);
 
 };
+
+blog.truncateArticles = function () {
+  $('article p:not(:first-child)').hide();
+  $('main').on('click', '.read-on', function(event){
+    event.preventDefault();
+    $(this).parent().find('p').fadeIn();
+    $(this).hide();
+  });
+
+}
+/*blog.mainNav = function () {
+  $('#' + $(this).data(content)).fadeIn();//show section by id =tab-content and start hidden
+  // body...
+  $('main-nav .tab-first')
+}*/
 // ms /1000/60/60/24
 $(function () {
+  blog.sortArticles();
   blog.makePosts();
+  blog.truncateArticles();
 });
