@@ -11,7 +11,8 @@ var Article = function(props){
 
 Article.prototype.toHtml = function () {
   var $clone = $(' .template').filter(':first').clone(true);
-  $clone.find('.author').html(this.author);
+  var authorInfo = 'By ' + this.author + ' published about ' + this.daysBetween + ' days ago.';
+  $clone.find('.author').html(authorInfo);
   $clone.find('.body').html(this.body);
   $clone.find('.title').html(this.title);
   $clone.find('a[href]').attr('href', this.authorUrl);
