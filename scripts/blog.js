@@ -59,17 +59,12 @@ blog.filterViewByCategory = function () {
 
   $.fn.append.apply($('.category-filter'), dataArray)
     .change(function() {
+      $('article').show();
       var $boo = $('.category-filter option:selected').val();
-        //.each(function(){
       $('.author-filter').children().removeAttr('selected');
-      var testing = $('em:not(:contains('+ $boo +'))').parent().parent().parent().hide();
-      console.log(testing)
-
-        //});
+      $('article h6:not(:contains('+ $boo +'))').parent().hide();
     });
 };
-
- //$(item:not(:contains(selectedItem.val()))).(:)
 
 $(function () {
   blog.makePosts();

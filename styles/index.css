@@ -7,3 +7,12 @@ html {
 img {
   max-width: 100%;
 }
+body{
+  background-color: #A1DFE2;
+}
+a {
+  color: #236265;
+}
+a:hover{
+  color: #010304;
+}
