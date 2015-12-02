@@ -12,6 +12,7 @@ blog.makePosts = function(){
   }
 };
 
+
 blog.sortArticles = function () {
   blog.rawData.sort(function (a, b) {
     if (a.publishedOn < b.publishedOn) { return 1;}
@@ -19,6 +20,7 @@ blog.sortArticles = function () {
     return 0;
   });
 };
+
 
 blog.dateDiff = function(date1){
   return(Math.floor((new Date() - new Date(date1)) / 86400000));
@@ -71,5 +73,6 @@ $(function () {
   blog.truncateArticles();
   blog.filterViewByAuthor();
   blog.filterViewByCategory();
+
 
 });
