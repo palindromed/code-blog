@@ -1,36 +1,53 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>This is a blog!</title>
+    <link rel="stylesheet" type="text/css" href="styles/index.css">
   </head>
   <body>
 
     <header>
-      <h1>Introduction to Not Being a Stupid Jackass</h1>
-      <p>Title comes from The Name of the Wind</p>
-        <nav>
+      <h1>Hannah's Blog</h1>
+      <p>Blog About Lots of Things</p>
+        <nav class="nav-tab">
           <ul>
-            <li>
-              <a>Articles</a>
+            <li data-content="articles" class="tab">
+              <a href="#">Articles</a>
+            </li>
+            <li class="about-tab">
+              <a href="#" >About</a>
             </li>
             <li>
-              <a>About</a>
+              <a href="http://www.twitter.com/hannah_krager">Twitter</a>
             </li>
             <li>
-              <a>Twitter</a>
-            </li>
-            <li>
-              <a>GitHub</a>
+              <a href="http://www.github.com/palindromed">GitHub</a>
             </li>
           </ul>
         </nav>
     </header>
+    <section class="about-section">
+      <h5>Hannah Krager</h5>
+      <ul>
+        <li>All the Python</li>
+        <li>The Doctors Who</li>
+      </ul>
+    </section>
     <main class="main">
+      <select class="author-filter" name="author-filter">
+        <option value="option">Select By Author</option>
+      </select>
+      <select class="category-filter" name="category-filter">
+        <option value="option">Select By Category</option>
+      </select>
       <article class="template">
         <h1 class="title"></h1>
         <h5 class="about"></h5>
-        <p class="body">
-        </p>
+        <h6 class=category></h6>
+        <section class="body">
+        </section>
+        <a href="#" class="read-on"></a>
       </article>
     </main>
     <footer>
@@ -42,7 +59,7 @@
   <script type="text/javascript"  src="scripts/blog.js"></script>
   <script type="text/javascript"  src="scripts/article.js"></script>
   <script type="text/javascript" src="scripts/blogArticles.js"></script>
-  <script type="text/javascript" src="scripts/index.js"></script>
-  <link rel="stylesheet" type="text/css" href="styles/index.css">
+  <script type="text/javascript" src="scripts/util.js"></script>
+
 
 </html>
