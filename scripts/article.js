@@ -13,7 +13,7 @@ Article.prototype.toHtml = function () {
   var $clone = $('.template').filter(':first').clone(true).removeClass('template');
   var authorInfo = 'By  <a href="'+ this.authorUrl + '" >'+ this.author + '</a> published about ' + this.daysBetween + ' days ago.';
   $clone.find('.about').html(authorInfo);
-  $clone.find('.body').html(this.body);
+  $clone.find('p').html(this.body);
   $clone.find('.title').html(this.title);
   $('.main').append($clone);
 };

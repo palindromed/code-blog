@@ -50,21 +50,21 @@ blog.dateDiff = function(date1){
 
 };
 
-/*blog.truncateArticles = function () {
-  $('article p:not(:first-child)').hide();
+blog.truncateArticles = function () {
+  $('p p:not(:first-child)').hide();
   $('main').on('click', '.read-on', function(event){
     event.preventDefault();
     $(this).parent().find('p').fadeIn();
     $(this).hide();
   });
 
-}*/
-/*blog.mainNav = function () {
+}
+blog.mainNav = function () {
   $('#' + $(this).data(content)).fadeIn();//show section by id =tab-content and start hidden
   // body...
   $('main-nav .tab-first')
-}*/
-// ms /1000/60/60/24
+}
+
 $(function () {
   blog.makePosts();
   blog.truncateArticles();
