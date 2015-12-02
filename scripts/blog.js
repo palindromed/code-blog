@@ -14,15 +14,15 @@ blog.makePosts = function(){
 
 blog.sortArticles = function () {
   blog.rawData.sort(function (a, b) {
-  if (a.publishedOn < b.publishedOn) {
-    return 1;
-  }
-  if (a.publishedOn > b.publishedOn) {
-    return -1;
-  }
-  return 0;
-});
-}
+    if (a.publishedOn < b.publishedOn) {
+      return 1;
+    }
+    if (a.publishedOn > b.publishedOn) {
+      return -1;
+    }
+    return 0;
+  });
+};
 
 blog.dateDiff = function(date1){
   var today = new Date();
@@ -57,11 +57,23 @@ blog.truncateArticles = function () {
     $(this).hide();
   });
 
-}
+};
+
+blog.filterViewByAuthor = function () {
+  console.log(blog.rawData);
+  $.each(item, function (i, item) {
+    console.log(blog.rawData.author);
+    $('.author-filter').append($('<option>', {
+      value: blog.rawData.author,
+      text : blog.rawData.author
+    }));
+  });
+};
 
 
 $(function () {
   blog.makePosts();
   blog.truncateArticles();
+  blog.filterViewByAuthor(blog);
 
 });

@@ -7,11 +7,12 @@ var Article = function(props){
   this.publishedOn = props.publishedOn;
   this.authorUrl = props.authorUrl;
   this.daysBetween = props.daysBetween;
+  this.category = props.category;
 };
 
 Article.prototype.toHtml = function () {
   var $clone = $('.template').filter(':first').clone(true).removeClass('template');
-  var authorInfo = 'By  <a href="'+ this.authorUrl + '" >'+ this.author + '</a> published about ' + this.daysBetween + ' days ago.';
+  var authorInfo = 'By  <a href="'+ this.authorUrl + '" ><em>'+ this.author + '</em></a> published about ' + this.daysBetween + ' days ago.';
   $clone.find('.about').html(authorInfo);
   $clone.find('p').html(this.body);
   $clone.find('.title').html(this.title);

@@ -19,7 +19,6 @@ util.articleTab = function () {
     $('.about-section').hide();
 
   });
-
 };
 
 $(function(){
