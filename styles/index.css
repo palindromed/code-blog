@@ -4,3 +4,6 @@ html {
         margin: 25px auto;
         padding: 15px;
 }
+img {
+  max-width: 100%;
+}

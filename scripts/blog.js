@@ -25,7 +25,7 @@ blog.dateDiff = function(date1){
 };
 
 blog.truncateArticles = function () {
-  $('article p p:not(:first-child)').hide();
+  $('article section p:not(:first-child)').hide();
   $('main').on('click', '.read-on', function(event){
     event.preventDefault();
     $(this).parent().find('p').fadeIn();
@@ -42,12 +42,11 @@ blog.filterViewByAuthor = function () {
 
   $.fn.append.apply($('.author-filter'), options)
     .change(function() {
-      $('.author-filter option:selected')
-        .each(function(){
-          $('.category-filter').children().removeAttr('selected');
-          //$('article').
+      $('article').show();
+      $('.category-filter').children().removeAttr('selected');
+      var $hoo = $('.author-filter option:selected').val();
+      $('article h5:not(:contains("'+ $hoo +'"))').parent().hide();
 
-        });
     });
 };
 
@@ -60,11 +59,13 @@ blog.filterViewByCategory = function () {
 
   $.fn.append.apply($('.category-filter'), dataArray)
     .change(function() {
-      $('.category-filter option:selected')
-        .each(function(){
-          $('.author-filter').children().removeAttr('selected');
+      var $boo = $('.category-filter option:selected').val();
+        //.each(function(){
+      $('.author-filter').children().removeAttr('selected');
+      var testing = $('em:not(:contains('+ $boo +'))').parent().parent().parent().hide();
+      console.log(testing)
 
-        });
+        //});
     });
 };
 

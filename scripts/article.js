@@ -14,8 +14,8 @@ Article.prototype.toHtml = function () {
   var $clone = $('.template').filter(':first').clone(true).removeClass('template');
   var authorInfo = 'By  <a href="'+ this.authorUrl + '" ><em>'+ this.author + '</em></a> published about ' + this.daysBetween + ' days ago.';
   $clone.find('.about').html(authorInfo);
-  $clone.find('p').html(this.body);
+  $clone.find('.body').html(this.body);
   $clone.find('.read-on').text('Read On');
-  $clone.find('.title').html(this.title);
+  $clone.find('.title').html(this.title).addClass(this.author);
   $('.main').append($clone);
 };
