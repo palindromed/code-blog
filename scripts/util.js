@@ -4,7 +4,8 @@ var util = {};
 
 util.aboutTab = function(){
   $('.about-section').hide();
-  $('li').on('click', '.about-tab', function(event){
+
+  $('ul').on('click', '.about-tab', function(event){
     event.preventDefault();
     $('main').hide();
     $('.about-section').fadeIn();
@@ -12,7 +13,8 @@ util.aboutTab = function(){
 };
 
 util.articleTab = function () {
-  $('li').on('click', '.tab', function(event){
+  $('ul').on('click', '.tab', function(event){
+    event.preventDefault();
     $('main').show();
     $('.about-section').hide();
 
@@ -22,4 +24,5 @@ util.articleTab = function () {
 
 $(function(){
   util.aboutTab();
+  util.articleTab();
 });
