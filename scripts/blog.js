@@ -56,24 +56,49 @@ blog.truncateArticles = function () {
     $(this).parent().find('p').fadeIn();
     $(this).hide();
   });
-
 };
 
 blog.filterViewByAuthor = function () {
-  console.log(blog.rawData);
-  $.each(item, function (i, item) {
-    console.log(blog.rawData.author);
-    $('.author-filter').append($('<option>', {
-      value: blog.rawData.author,
-      text : blog.rawData.author
-    }));
+  var options = $.map(blog.rawData, function(post, idx) {
+    var optionTag = $('<option>').val(post.author).text(post.author);
+    optionTag.data('rawdata', post);
+    return optionTag;
   });
+
+  $.fn.append.apply($('.author-filter'), options)
+    .change(function() {
+      $('.author-filter option:selected')
+        .each(function(){
+          $('.category-filter').children().removeAttr('selected');
+          $('article').
+
+        });
+    });
 };
+
+blog.filterViewByCategory = function () {
+  var dataArray = $.map(blog.rawData, function(post, idx) {
+    var optionTag = $('<option/>').val(post.category).text(post.category);
+    optionTag.data('rawdata', post);
+    return optionTag;
+  });
+
+  $.fn.append.apply($('.category-filter'), dataArray)
+    .change(function() {
+      $('.category-filter option:selected')
+        .each(function(){
+          $('.author-filter').children().removeAttr('selected');
+
+        });
+    });
+};
+
 
 
 $(function () {
   blog.makePosts();
   blog.truncateArticles();
-  blog.filterViewByAuthor(blog);
+  blog.filterViewByAuthor();
+  blog.filterViewByCategory();
 
 });
