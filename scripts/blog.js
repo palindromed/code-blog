@@ -14,39 +14,14 @@ blog.makePosts = function(){
 
 blog.sortArticles = function () {
   blog.rawData.sort(function (a, b) {
-    if (a.publishedOn < b.publishedOn) {
-      return 1;
-    }
-    if (a.publishedOn > b.publishedOn) {
-      return -1;
-    }
+    if (a.publishedOn < b.publishedOn) { return 1;}
+    if (a.publishedOn > b.publishedOn) { return -1;}
     return 0;
   });
 };
 
 blog.dateDiff = function(date1){
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth()+1;
-  var yyyy = today.getFullYear();
-
-  if(dd<10) {
-    dd='0'+dd;
-  }
-
-  if(mm<10) {
-    mm='0'+mm;
-  }
-
-  today = yyyy +'-'+ mm+'-'+dd;
-
-  var year = parseInt(date1.slice(0, [4]));
-  var month = parseInt(date1.slice(5, [7]));
-  var day = parseInt(date1.slice(-2));
-  var monthDiff = (mm-month) * 30;
-  var dayDiff = (dd-day) + monthDiff;
-  return(dayDiff);
-
+  return(Math.floor((new Date() - new Date(date1)) / 86400000));
 };
 
 blog.truncateArticles = function () {
@@ -70,7 +45,7 @@ blog.filterViewByAuthor = function () {
       $('.author-filter option:selected')
         .each(function(){
           $('.category-filter').children().removeAttr('selected');
-          $('article').
+          //$('article').
 
         });
     });
@@ -78,7 +53,7 @@ blog.filterViewByAuthor = function () {
 
 blog.filterViewByCategory = function () {
   var dataArray = $.map(blog.rawData, function(post, idx) {
-    var optionTag = $('<option/>').val(post.category).text(post.category);
+    var optionTag = $('<option>').val(post.category).text(post.category);
     optionTag.data('rawdata', post);
     return optionTag;
   });
@@ -93,7 +68,7 @@ blog.filterViewByCategory = function () {
     });
 };
 
-
+ //$(item:not(:contains(selectedItem.val()))).(:)
 
 $(function () {
   blog.makePosts();

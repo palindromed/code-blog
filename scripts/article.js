@@ -15,6 +15,7 @@ Article.prototype.toHtml = function () {
   var authorInfo = 'By  <a href="'+ this.authorUrl + '" ><em>'+ this.author + '</em></a> published about ' + this.daysBetween + ' days ago.';
   $clone.find('.about').html(authorInfo);
   $clone.find('p').html(this.body);
+  $clone.find('.read-on').text('Read On');
   $clone.find('.title').html(this.title);
   $('.main').append($clone);
 };
