@@ -16,14 +16,14 @@ blog.makePosts = function(){
 
 blog.sortArticles = function () {
   blog.rawData.sort(function (a, b) {
-  if (a.value > b.value) {
+  if (a.publishedOn < b.publishedOn) {
     return 1;
   }
-  if (a.value < b.value) {
+  if (a.publishedOn > b.publishedOn) {
     return -1;
   }
   return 0;
-  });
+});
 }
 
 blog.dateDiff = function(date1){
