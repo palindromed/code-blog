@@ -40,18 +40,17 @@ blog.dateDiff = function(date1){
 
   today = yyyy +'-'+ mm+'-'+dd;
 
-
-    var year = parseInt(date1.slice(0, [4]));
-    var month = parseInt(date1.slice(5, [7]));
-    var day = parseInt(date1.slice(-2));
-    var monthDiff = (mm-month) * 30;
-    var dayDiff = (dd-day) + monthDiff;
-    return(dayDiff);
+  var year = parseInt(date1.slice(0, [4]));
+  var month = parseInt(date1.slice(5, [7]));
+  var day = parseInt(date1.slice(-2));
+  var monthDiff = (mm-month) * 30;
+  var dayDiff = (dd-day) + monthDiff;
+  return(dayDiff);
 
 };
 
 blog.truncateArticles = function () {
-  $('p p:not(:first-child)').hide();
+  $('article p p:not(:first-child)').hide();
   $('main').on('click', '.read-on', function(event){
     event.preventDefault();
     $(this).parent().find('p').fadeIn();
@@ -59,13 +58,10 @@ blog.truncateArticles = function () {
   });
 
 }
-blog.mainNav = function () {
-  $('#' + $(this).data(content)).fadeIn();//show section by id =tab-content and start hidden
-  // body...
-  $('main-nav .tab-first')
-}
+
 
 $(function () {
   blog.makePosts();
   blog.truncateArticles();
+
 });
