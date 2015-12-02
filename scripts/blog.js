@@ -4,6 +4,7 @@ var blog = {};
 
 blog.makePosts = function(){
   for(var i=0; i < blog.rawData.length; i++){
+    blog.sortArticles();
     var post = blog.rawData[i];
     post.daysBetween = blog.dateDiff(post.publishedOn);
     var posted =new Article(post);
@@ -11,12 +12,12 @@ blog.makePosts = function(){
   }
 };
 
-blog.sortArticles = function (argument) {
+blog.sortArticles = function () {
   blog.rawData.sort(function (a, b) {
-  if (a.value > b.value) {
+  if (a.publishedOn < b.publishedOn) {
     return 1;
   }
-  if (a.value < b.value) {
+  if (a.publishedOn > b.publishedOn) {
     return -1;
   }
   return 0;
@@ -39,13 +40,17 @@ blog.dateDiff = function(date1){
 
   today = yyyy +'-'+ mm+'-'+dd;
 
-  var msDiff = today - date1;
-  var dayDiff = msDiff / ;
-  return(dayDiff);
+
+    var year = parseInt(date1.slice(0, [4]));
+    var month = parseInt(date1.slice(5, [7]));
+    var day = parseInt(date1.slice(-2));
+    var monthDiff = (mm-month) * 30;
+    var dayDiff = (dd-day) + monthDiff;
+    return(dayDiff);
 
 };
 
-blog.truncateArticles = function () {
+/*blog.truncateArticles = function () {
   $('article p:not(:first-child)').hide();
   $('main').on('click', '.read-on', function(event){
     event.preventDefault();
@@ -53,7 +58,7 @@ blog.truncateArticles = function () {
     $(this).hide();
   });
 
-}
+}*/
 /*blog.mainNav = function () {
   $('#' + $(this).data(content)).fadeIn();//show section by id =tab-content and start hidden
   // body...
@@ -61,7 +66,6 @@ blog.truncateArticles = function () {
 }*/
 // ms /1000/60/60/24
 $(function () {
-  blog.sortArticles();
   blog.makePosts();
   blog.truncateArticles();
 });
