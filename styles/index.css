@@ -1,16 +1,24 @@
 @media screen and (min-width: 500px){
+   .nav-tab{
+
+    list-style: none;
+    overflow: hidden;
+    border: 1px solid #555;
+    background-color: #D3CCC6;
+  }
   .tab {
-    display: inline;
+      display: inline;
+      color: #A07D7D;
+      text-align: left;
+      padding: 14px 16px;
   }
-  .nav-tab {
-    display: none;
-  }
+
 }
 html {
   max-width: 900px;
-  width: 100%;
+  width: 80%;
   margin: 25px auto;
-  padding: 15px;
+
 }
 img {
   max-width: 100%;
@@ -24,9 +32,10 @@ a {
 a:hover{
   color: #D3C6C6;
 }
+@media screen and (max-width: 500px) {
 .nav-tab{
   list-style: none;
-  width: 100%;
+  width: 80%;
   height: 100%;
   overflow: hidden;
   border: 1px solid #555;
@@ -36,13 +45,10 @@ a:hover{
 }
 .tab {
     display: block;
-    color: #A07D7D;
-    text-align: left;
-    justify-content: left;
     padding: 14px 16px;
-    text-decoration: none;
     border-bottom: 1px solid #555;
 }
 .tab:last-child{
   border-bottom: none;
+}
 }
