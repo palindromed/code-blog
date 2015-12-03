@@ -1,6 +1,6 @@
 @media screen and (min-width: 500px){
    .nav-tab{
-
+     padding: 14px 16px;
     list-style: none;
     overflow: hidden;
     border: 1px solid #555;
