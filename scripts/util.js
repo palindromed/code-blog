@@ -21,7 +21,15 @@ util.articleTab = function () {
   });
 };
 
+util.practiceHandleBars = function () {
+  var source = $('#practiceTemplate').html();
+  var template = Handlebars.compile(source);
+  var html = template({firstname: 'Hannah'});
+  $('#practice').append(html);
+};
+
 $(function(){
   util.aboutTab();
   util.articleTab();
+  util.practiceHandleBars();
 });
