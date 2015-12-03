@@ -1,18 +1,54 @@
+@media screen and (min-width: 500px){
+   .nav-tab{
+     padding: 14px 16px;
+    list-style: none;
+    overflow: hidden;
+    border: 1px solid #555;
+    background-color: #D3CCC6;
+  }
+  .tab {
+      display: inline;
+      color: #A07D7D;
+      text-align: left;
+      padding: 14px 16px;
+  }
+
+}
 html {
   max-width: 900px;
-        width: 100%;
-        margin: 25px auto;
-        padding: 15px;
+  width: 80%;
+  margin: 25px auto;
+
 }
 img {
   max-width: 100%;
 }
 body{
-  background-color: #A1DFE2;
+  background-color: #F9E6D5;
 }
 a {
-  color: #236265;
+  color: #A07D7D;
 }
 a:hover{
-  color: #010304;
+  color: #D3C6C6;
+}
+@media screen and (max-width: 500px) {
+.nav-tab{
+  list-style: none;
+  width: 80%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #555;
+  background-color: #D3CCC6;
+
+
+}
+.tab {
+    display: block;
+    padding: 14px 16px;
+    border-bottom: 1px solid #555;
+}
+.tab:last-child{
+  border-bottom: none;
+}
 }

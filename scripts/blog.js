@@ -23,7 +23,7 @@ blog.sortArticles = function () {
 
 
 blog.dateDiff = function(date1){
-  return(Math.floor((new Date() - new Date(date1)) / 86400000));
+  return Math.floor((new Date() - new Date(date1)) / 86400000);
 };
 
 blog.truncateArticles = function () {
@@ -46,8 +46,8 @@ blog.filterViewByAuthor = function () {
     .change(function() {
       $('article').show();
       $('.category-filter').children().removeAttr('selected');
-      var $hoo = $('.author-filter option:selected').val();
-      $('article h5:not(:contains("'+ $hoo +'"))').parent().hide();
+      var $selectedAuthor = $('.author-filter option:selected').val();
+      $('article h5:not(:contains("'+ $selectedAuthor +'"))').parent().hide();
 
     });
 };
@@ -57,14 +57,15 @@ blog.filterViewByCategory = function () {
     var optionTag = $('<option>').val(post.category).text(post.category);
     optionTag.data('rawdata', post);
     return optionTag;
-  });
 
+  });
+  //$.unique(dataArray);
   $.fn.append.apply($('.category-filter'), dataArray)
     .change(function() {
       $('article').show();
-      var $boo = $('.category-filter option:selected').val();
+      var $selectedCategory = $('.category-filter option:selected').val();
       $('.author-filter').children().removeAttr('selected');
-      $('article h6:not(:contains('+ $boo +'))').parent().hide();
+      $('article h6:not(:contains('+ $selectedCategory +'))').parent().hide();
     });
 };
 

@@ -20,4 +20,9 @@ Article.prototype.toHtml = function () {
   $clone.find('.read-on').text('Read On');
   $clone.find('.title').html(this.title).addClass(this.author);
   $('.main').append($clone);
+  //get template from html, use handlebars.compile to generate template
+  //then append back to html 
+
+  //this.daysAgo move that function here
+  //util.slug-regex to replace spaces with -
 };
