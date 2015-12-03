@@ -15,15 +15,14 @@
 
 }
 html {
-  display: flex;
   max-width: 900px;
   width: 100%;
   margin: 25px auto;
-  overflow: auto;
+  padding: 15px;
 }
 
 body{
-  display: flex-column;
+
   background-color: #F9E6D5;
 }
 a {
@@ -33,9 +32,13 @@ a:hover{
   color: #D3C6C6;
 }
 img {
-  overflow: auto;
-
+  max-width: 100%;
+  max-height: 100%;
 }
+article {
+  overflow: auto;
+}
+
 @media screen and (max-width: 500px) {
 .nav-tab{
   list-style: none;
@@ -55,4 +58,5 @@ img {
 .tab:last-child{
   border-bottom: none;
 }
+
 }
