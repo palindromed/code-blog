@@ -13,7 +13,7 @@ util.aboutTab = function(){
 };
 
 util.articleTab = function () {
-  $('ul').on('click', '.tab', function(event){
+  $('ul').on('click', '.article-tab', function(event){
     event.preventDefault();
     $('main').show();
     $('.about-section').hide();

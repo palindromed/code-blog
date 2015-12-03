@@ -1,3 +1,11 @@
+@media screen and (min-width: 500px){
+  .tab {
+    display: inline;
+  }
+  .nav-tab {
+    display: none;
+  }
+}
 html {
   max-width: 900px;
   width: 100%;
@@ -16,26 +24,25 @@ a {
 a:hover{
   color: #D3C6C6;
 }
-.nav-tab, .container{
+.nav-tab{
   list-style: none;
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
   overflow: hidden;
+  border: 1px solid #555;
+  background-color: #D3CCC6;
+
+
 }
-li {
-  float: left;
-}
-li a {
+.tab {
     display: block;
     color: #A07D7D;
-    text-align: center;
+    text-align: left;
+    justify-content: left;
     padding: 14px 16px;
     text-decoration: none;
+    border-bottom: 1px solid #555;
 }
-@media screen and (min-width: 500px;){
-  li{
-    display: inline;
-  }
+.tab:last-child{
+  border-bottom: none;
 }
