@@ -32,8 +32,8 @@ util.filterViewByAuthor = function () {
     $('.category-filter').children().removeAttr('selected');
     var $selectedAuthor = $('.author-filter option:selected').val();
     var slugSelected = blog.slugify($selectedAuthor);
-    var test = $('span:not(:contains('+ slugSelected +'))').parent().hide();
-    console.log(test);
+    $('span:not(:contains('+ slugSelected +'))').parent().hide();
+
   });
 };
 
@@ -47,8 +47,8 @@ util.filterViewByCategory = function () {
     $('article').show();
     $('.author-filter').children().removeAttr('selected');
     var selectedCategory = $('.category-filter option:selected').val();
-    var testCat = $('article h6:not(:contains('+ selectedCategory+'))').parent().hide();
-    console.log(testCat);
+    $('article h6:not(:contains('+ selectedCategory+'))').parent().hide();
+
   });
 
 };
