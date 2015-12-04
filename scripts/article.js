@@ -9,20 +9,3 @@ var Article = function(props){
   this.daysBetween = props.daysBetween;
   this.category = props.category;
 };
-
-Article.prototype.toHtml = function () {
-  var $clone = $('.template').filter(':first').clone(true).removeClass('template');
-  var authorInfo = 'By  <a href="'+ this.authorUrl + '" ><em>'+ this.author +
-   '</em></a> published about ' + this.daysBetween + ' days ago';
-  $clone.find('.category').html('Tags: ' + this.category );
-  $clone.find('.about').html(authorInfo);
-  $clone.find('.body').html(this.body);
-  $clone.find('.read-on').text('Read On');
-  $clone.find('.title').html(this.title).addClass(this.author);
-  $('.main').append($clone);
-  //get template from html, use handlebars.compile to generate template
-  //then append back to html 
-
-  //this.daysAgo move that function here
-  //util.slug-regex to replace spaces with -
-};

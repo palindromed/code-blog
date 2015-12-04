@@ -8,8 +8,9 @@ blog.makePosts = function(){
     var post = blog.rawData[i];
     post.daysBetween = blog.dateDiff(post.publishedOn);
     var posted =new Article(post);
-    posted.toHtml();
+    //posted.toHtml();
   }
+  blog.toHtml();
 };
 
 
@@ -19,6 +20,23 @@ blog.sortArticles = function () {
     if (a.publishedOn > b.publishedOn) { return -1;}
     return 0;
   });
+};
+
+
+blog.toHtml = function () {
+  var source = $('#articleTemplate').html();
+
+  var template = Handlebars.compile(source);
+  var compiledHtml = template(blog);
+
+  $('.main').html(compiledHtml);
+
+  //}
+  //get template from html, use handlebars.compile to generate template
+  //then append back to html
+
+  //this.daysAgo move that function here
+  //util.slug-regex to replace spaces with -
 };
 
 

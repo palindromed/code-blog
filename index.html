@@ -8,17 +8,11 @@
 
   </head>
   <body>
-    <script id="practiceTemplate" type="text/x-handlebars-template">
-      <h1>Hello {{firstname}}</h1>
-
-    </script>
-
     <header>
-      <h1 id="practice">Hannah's Blog</h1>
+      <h1>Hannah's Blog</h1>
       <p>Blog About Lots of Things</p>
 
           <ul class="nav-tab">
-
             <li data-content="articles" class="article-tab tab">
               <i class="fa fa-book"></i>
               <a href="#">Articles</a>
@@ -52,14 +46,16 @@
       <select class="category-filter" name="category-filter">
         <option value="option">Select By Category</option>
       </select>
+      <script id="articleTemplate" type="text/x-handlebars-template">
       <article class="template">
-        <h1 class="title"></h1>
-        <h5 class="about"></h5>
-        <h6 class=category></h6>
-        <section class="body">
-        </section>
-        <a href="#" class="read-on"></a>
+        {{#each rawData}}
+        <h1 class="title">{{title}}</h1>
+        <h5 class="about">By <a href=""+ {{authorUrl}}+"">{{author}}</a> about {{daysBetween}} days ago</h5>
+        <h6 class=category>{{category}}</h6>
+        <section class="body">{{{body}}}</section>
+        {{/each}}
       </article>
+      </script>
     </main>
     <footer>
 
