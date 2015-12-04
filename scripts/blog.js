@@ -35,11 +35,12 @@ blog.toHtml = function () {
   var source = $('#articleTemplate').html();
   var template = Handlebars.compile(source);
   var compiledHtml = template(blog);
-  $('.article-collection').html(compiledHtml);
+  $('main').append(compiledHtml);
 };
 
 
 blog.truncateArticles = function () {
+  $('span').hide();
   $('article section p:not(:first-child)').hide();
   $('main').on('click', '.read-on', function(event){
     event.preventDefault();
