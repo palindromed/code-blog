@@ -47,7 +47,7 @@ util.filterViewByCategory = function () {
     $('article').show();
     $('.author-filter').children().removeAttr('selected');
     var selectedCategory = $('.category-filter option:selected').val();
-    var testCat = $('h6:not(:contains('+ selectedCategory+'))');
+    var testCat = $('article h6:not(:contains('+ selectedCategory+'))').parent().hide();
     console.log(testCat);
   });
 
