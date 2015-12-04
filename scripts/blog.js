@@ -27,8 +27,6 @@ blog.toHtml = function () {
   var template = Handlebars.compile(source);
   var compiledHtml = template(blog);
   $('.article-collection').html(compiledHtml);
-
-  //this.daysAgo move that function here
   //util.slug-regex to replace spaces with -
 };
 

@@ -21,37 +21,19 @@ util.articleTab = function () {
   });
 };
 util.filterViewByAuthor = function () {
-  var options = $.map(blog.rawData, function(post, idx) {
-    var optionTag = $('<option>').val(post.author).text(post.author);
-    optionTag.data('rawdata', post);
-    return optionTag;
-  });
 
-  $.fn.append.apply($('.author-filter'), options)
-    .change(function() {
-      $('article').show();
-      $('.category-filter').children().removeAttr('selected');
-      var $selectedAuthor = $('.author-filter option:selected').val();
-      $('article h5:not(:contains("'+ $selectedAuthor +'"))').parent().hide();
-
-    });
+  var source = $('#author-filter-template').html();
+  var template = Handlebars.compile(source);
+  var compiledHtml = template(blog);
+  $('.author-filter-attach').html(compiledHtml);
 };
 
 util.filterViewByCategory = function () {
-  var dataArray = $.map(blog.rawData, function(post, idx) {
-    var optionTag = $('<option>').val(post.category).text(post.category);
-    optionTag.data('rawdata', post);
-    return optionTag;
+  var source = $('#category-filter-template').html();
+  var template = Handlebars.compile(source);
+  var compiledHtml = template(blog);
+  $('.category-filter-attach').html(compiledHtml);
 
-  });
-  //$.unique(dataArray);
-  $.fn.append.apply($('.category-filter'), dataArray)
-    .change(function() {
-      $('article').show();
-      var $selectedCategory = $('.category-filter option:selected').val();
-      $('.author-filter').children().removeAttr('selected');
-      $('article h6:not(:contains('+ $selectedCategory +'))').parent().hide();
-    });
 };
 $(function(){
   util.aboutTab();

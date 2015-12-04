@@ -40,14 +40,35 @@
       </ul>
     </section>
     <main class="main">
-      <select class="author-filter" name="author-filter">
-        <option value="option">Select By Author</option>
+      <section class="author-filter-attach">
+      <script id="author-filter-template" type="text/x-handlebars-template">
+
+        <select class="author-filter" name="author-filter">
+
+        <option value="author-options">Select By Author</option>
+          {{#each rawData}}
+        <option class="">{{author}}</option>
+          {{/each}}
       </select>
+    </script>
+    </section>
+
+
+      <section class="category-filter-attach">
+      <script id="category-filter-template" type="text/x-handlebars-template">
       <select class="category-filter" name="category-filter">
         <option value="option">Select By Category</option>
-      </select>
-      <section class="article-collection">
+        {{#each rawData}}
+      <option class="">{{category}}</option>
+        {{/each}}
+    </select>
+  </script>
+</section>
 
+
+
+
+      <section class="article-collection">
       <script id="articleTemplate" type="text/x-handlebars-template">
       <article class="template">
         {{#each rawData}}
