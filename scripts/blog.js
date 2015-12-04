@@ -7,9 +7,18 @@ blog.makePosts = function(){
     blog.sortArticles();
     var post = blog.rawData[i];
     post.daysBetween = blog.dateDiff(post.publishedOn);
+    post.authorSlug = blog.slugify(post.author);
     new Article(post);
   }
   blog.toHtml();
+};
+
+blog.slugify = function (string) {
+  return string.replace(/\s/g , '-');
+};
+
+blog.dateDiff = function(date1){
+  return Math.floor((new Date() - new Date(date1)) / 86400000);
 };
 
 
@@ -27,13 +36,8 @@ blog.toHtml = function () {
   var template = Handlebars.compile(source);
   var compiledHtml = template(blog);
   $('.article-collection').html(compiledHtml);
-  //util.slug-regex to replace spaces with -
 };
 
-
-blog.dateDiff = function(date1){
-  return Math.floor((new Date() - new Date(date1)) / 86400000);
-};
 
 blog.truncateArticles = function () {
   $('article section p:not(:first-child)').hide();

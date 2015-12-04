@@ -71,10 +71,10 @@
       <section class="article-collection">
       <script id="articleTemplate" type="text/x-handlebars-template">
         {{#each rawData}}
-      <article class="template" id={{authorSlug}}>
+      <article >
 
         <h1 class="title">{{title}}</h1>
-        <h5 class="about">By <a href=""+ {{authorUrl}}+"">{{author}}</a> about {{daysBetween}} days ago</h5>
+        <h5  class="{{authorSlug}}" value="{{authorSlug}}">By <a href=""+ {{authorUrl}}+"">{{author}}</a> about {{daysBetween}} days ago</h5>
         <h6 class=category>{{category}}</h6>
         <section class="body">{{{body}}}</section>
         {{/each}}

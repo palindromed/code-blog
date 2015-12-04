@@ -30,9 +30,11 @@ util.filterViewByAuthor = function () {
   $('.author-filter').change(function() {
     $('article').show();
     $('.category-filter').children().removeAttr('selected');
-    var $selectedAuthor = $('.author-filter option:selected').val();
-    $('article h5:not(:contains("'+ $selectedAuthor +'"))').parent().hide();
-
+    var $selectedAuthor = $('.author-filter option:selected').text();
+    var slugSelected = blog.slugify($selectedAuthor);
+    console.log(typeof(slugSelected));
+    var test = $('article h5.'+ slugSelected +':contains('+ slugSelected +')').hide();
+    console.log(test);
   });
 };
 
