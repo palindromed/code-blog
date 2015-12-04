@@ -26,6 +26,14 @@ util.filterViewByAuthor = function () {
   var template = Handlebars.compile(source);
   var compiledHtml = template(blog);
   $('.author-filter-attach').html(compiledHtml);
+
+  $('.author-filter').change(function() {
+    $('article').show();
+    $('.category-filter').children().removeAttr('selected');
+    var $selectedAuthor = $('.author-filter option:selected').val();
+    $('article h5:not(:contains("'+ $selectedAuthor +'"))').parent().hide();
+
+  });
 };
 
 util.filterViewByCategory = function () {

@@ -8,4 +8,12 @@ var Article = function(props){
   this.authorUrl = props.authorUrl;
   this.daysBetween = props.daysBetween;
   this.category = props.category;
+  this.authorSlug = this.slugify(this.author);
+};
+
+Article.prototype.slugify = function (string) {
+  return string.replace(/\s/g, '-')
+
+
+
 };

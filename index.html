@@ -47,7 +47,7 @@
 
         <option value="author-options">Select By Author</option>
           {{#each rawData}}
-        <option class="">{{author}}</option>
+        <option class=""+ {{authorSlug}} +"">{{author}}</option>
           {{/each}}
       </select>
     </script>
@@ -70,8 +70,9 @@
 
       <section class="article-collection">
       <script id="articleTemplate" type="text/x-handlebars-template">
-      <article class="template">
         {{#each rawData}}
+      <article class="template" id={{authorSlug}}>
+
         <h1 class="title">{{title}}</h1>
         <h5 class="about">By <a href=""+ {{authorUrl}}+"">{{author}}</a> about {{daysBetween}} days ago</h5>
         <h6 class=category>{{category}}</h6>
