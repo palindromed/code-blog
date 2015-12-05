@@ -2,17 +2,11 @@ var newPost = {};
 
 
 newPost.formProcess = function( ) {
+  $('#jsonView').hide();
   $('#submitPost').submit(function(event) {
     event.preventDefault();
     //populate newPost object
-    newPost.category = $('#category').val();
-    newPost.title = $('#title').val();
-    newPost.author = $('#author').val();
-    newPost.authorUrl = $('#authorUrl').val();
-    newPost.body = marked($('#body').val());
-    var date = new Date();
-    console.log(date);
-    newPost.publishedOn = date.getFullYear() + '-' + (date.getMonth() +1) + '-' + date.getDate();
+    newPost.createPost();
     //save object to local storage
     localStorage.setItem('newArticle', JSON.stringify(newPost));
     newPost.previewArticle();
@@ -25,19 +19,37 @@ newPost.formProcess = function( ) {
   });
 };
 
+newPost.createPost = function(){
+  newPost.title = $('#title').val();
+  newPost.category = $('#category').val();
+  newPost.author = $('#author').val();
+  newPost.authorUrl = $('#authorUrl').val();
+  var date = new Date();
+  var day = date.getDate();
+  if(day < 10) {
+    day = '0'+ day;
+  };
+  newPost.publishedOn = date.getFullYear() + '-' + (date.getMonth() +1) + '-' + day;
+  newPost.body = marked($('#body').val());
+
+}
+
 newPost.previewArticle = function() {
-  $('#preview').html(newPost.author);
+  var source = $('#articleTemplate').html();
+  var template = Handlebars.compile(source);
+  var compiledHtml = template(newPost);
+  $('#preview').append(compiledHtml);
+
 
 };
 
 newPost.jsonView = function() {
-  $('#jsonView').text(JSON.stringify(newPost));
+  $('#jsonView').text(JSON.stringify(newPost)).show();
 
 
 };
 
 /*JSON.parse(window.localStorage.getItem('newArticle')) */
 $(function(){
-
   newPost.formProcess();
 });
