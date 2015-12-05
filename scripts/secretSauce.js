@@ -12,9 +12,11 @@ newPost.formProcess = function( ) {
     newPost.body = marked($('#body').val());
     var date = new Date();
     console.log(date);
-    newPost.publishedOn = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
+    newPost.publishedOn = date.getFullYear() + '-' + (date.getMonth() +1) + '-' + date.getDate();
     //save object to local storage
     localStorage.setItem('newArticle', JSON.stringify(newPost));
+    newPost.previewArticle();
+    newPost.jsonView();
     //clear input elements
     $('#submitPost').each(function() {
       this.reset();
@@ -24,11 +26,18 @@ newPost.formProcess = function( ) {
 };
 
 newPost.previewArticle = function() {
+  $('#preview').html(newPost.author);
+
+};
+
+newPost.jsonView = function() {
+  $('#jsonView').text(JSON.stringify(newPost));
+
 
 };
 
 /*JSON.parse(window.localStorage.getItem('newArticle')) */
 $(function(){
-  newPost.previewArticle();
+
   newPost.formProcess();
 });
