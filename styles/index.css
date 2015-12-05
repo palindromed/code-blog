@@ -1,3 +1,34 @@
+/*Base Styling */
+html {
+  max-width: 900px;
+  width: 100%;
+  margin: 25px auto;
+  padding: 15px;
+}
+
+body{
+
+  background-color: #F9E6D5;
+}
+a {
+  color: #A07D7D;
+}
+a:hover{
+  color: #D3C6C6;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+article {
+  overflow: auto;
+}
+
+
+
+
+
+/*Desktop-Laptop view styles for navbar */
 @media screen and (min-width: 500px){
    .nav-tab{
      padding: 14px 16px;
@@ -14,24 +45,8 @@
   }
 
 }
-html {
-  max-width: 900px;
-  width: 80%;
-  margin: 25px auto;
 
-}
-img {
-  max-width: 100%;
-}
-body{
-  background-color: #F9E6D5;
-}
-a {
-  color: #A07D7D;
-}
-a:hover{
-  color: #D3C6C6;
-}
+/*Mobile-small screen styles for navbar*/
 @media screen and (max-width: 500px) {
 .nav-tab{
   list-style: none;
@@ -51,4 +66,5 @@ a:hover{
 .tab:last-child{
   border-bottom: none;
 }
+
 }

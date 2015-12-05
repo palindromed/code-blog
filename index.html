@@ -8,13 +8,11 @@
 
   </head>
   <body>
-
     <header>
       <h1>Hannah's Blog</h1>
       <p>Blog About Lots of Things</p>
 
           <ul class="nav-tab">
-
             <li data-content="articles" class="article-tab tab">
               <i class="fa fa-book"></i>
               <a href="#">Articles</a>
@@ -42,20 +40,59 @@
       </ul>
     </section>
     <main class="main">
-      <select class="author-filter" name="author-filter">
-        <option value="option">Select By Author</option>
+      <section class="author-filter-attach">
+      <script id="author-filter-template" type="text/x-handlebars-template">
+
+        <select class="author-filter" name="author-filter">
+
+        <option value="author-options">Select By Author</option>
+          {{#each rawData}}
+        <option class=""+ {{authorSlug}} +"">{{author}}</option>
+          {{/each}}
       </select>
+    </script>
+    </section>
+
+
+      <section class="category-filter-attach">
+      <script id="category-filter-template" type="text/x-handlebars-template">
       <select class="category-filter" name="category-filter">
         <option value="option">Select By Category</option>
-      </select>
-      <article class="template">
-        <h1 class="title"></h1>
-        <h5 class="about"></h5>
-        <h6 class=category></h6>
-        <section class="body">
-        </section>
-        <a href="#" class="read-on"></a>
+        {{#each rawData}}
+      <option class="">{{category}}</option>
+        {{/each}}
+    </select>
+  </script>
+</section>
+
+
+
+
+
+
+      <script id="articleTemplate" type="text/x-handlebars-template">
+{{#each rawData}}
+
+      <article>
+
+        <span> {{authorSlug}}</span>
+        <h1 class="title">{{title}}</h1>
+        <h5  >By <a href=""+ {{authorUrl}}+"">{{author}}</a> about {{daysBetween}} days ago</h5>
+        <h6 class=category>{{category}}</h6>
+        <section class="body">{{{body}}}</section>
+         <a href="#" class="read-on">Read On</a>
+
       </article>
+
+          {{/each}}
+        <div class="content-placeholder">  </div>
+
+      </script>
+
+
+
+
+
     </main>
     <footer>
 
@@ -63,7 +100,7 @@
 
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+  <script src=" https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
   <script type="text/javascript"  src="scripts/blog.js"></script>
   <script type="text/javascript"  src="scripts/article.js"></script>
   <script type="text/javascript" src="scripts/blogArticles.js"></script>

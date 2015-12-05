@@ -20,8 +20,41 @@ util.articleTab = function () {
 
   });
 };
+util.filterViewByAuthor = function () {
 
+  var source = $('#author-filter-template').html();
+  var template = Handlebars.compile(source);
+  var compiledHtml = template(blog);
+  $('.author-filter-attach').append(compiledHtml);
+
+  $('.author-filter').change(function() {
+    $('article').show();
+    $('.category-filter').children().removeAttr('selected');
+    var $selectedAuthor = $('.author-filter option:selected').val();
+    var slugSelected = blog.slugify($selectedAuthor);
+    $('span:not(:contains('+ slugSelected +'))').parent().hide();
+
+  });
+};
+
+util.filterViewByCategory = function () {
+  var source = $('#category-filter-template').html();
+  var template = Handlebars.compile(source);
+  var compiledHtml = template(blog);
+  $('.category-filter-attach').html(compiledHtml);
+
+  $('.category-filter').change(function(){
+    $('article').show();
+    $('.author-filter').children().removeAttr('selected');
+    var selectedCategory = $('.category-filter option:selected').val();
+    $('article h6:not(:contains('+ selectedCategory+'))').parent().hide();
+
+  });
+
+};
 $(function(){
   util.aboutTab();
   util.articleTab();
+  util.filterViewByAuthor();
+  util.filterViewByCategory();
 });
