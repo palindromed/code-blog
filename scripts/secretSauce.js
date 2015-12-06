@@ -1,55 +1,52 @@
 var newPost = {};
 
-
 newPost.formProcess = function( ) {
   $('#jsonView').hide();
   $('#submitPost').submit(function(event) {
     event.preventDefault();
     //populate newPost object
-    newPost.createPost();
-    //save object to local storage
-    localStorage.setItem('newArticle', JSON.stringify(newPost));
-    newPost.previewArticle();
-    newPost.jsonView();
+    newPost.title = $('#title').val();
+    newPost.category = $('#category').val();
+    newPost.author = $('#author').val();
+    newPost.authorUrl = $('#authorUrl').val();
+
+    newPost.publishedOn = newPost.dateString();
+    newPost.body = marked($('#body').val());
+
     //clear input elements
     $('#submitPost').each(function() {
       this.reset();
     });
-    console.log(newPost);
+
+    //save object to local storage
+    localStorage.setItem('newArticle', JSON.stringify(newPost));
+
+    newPost.previewArticle();
+    //newPost.jsonView();
   });
 };
 
-newPost.createPost = function(){
-  newPost.title = $('#title').val();
-  newPost.category = $('#category').val();
-  newPost.author = $('#author').val();
-  newPost.authorUrl = $('#authorUrl').val();
+newPost.dateString = function() {
   var date = new Date();
   var day = date.getDate();
+  var month = date.getMonth() + 1;
   if(day < 10) {
     day = '0'+ day;
   };
-  newPost.publishedOn = date.getFullYear() + '-' + (date.getMonth() +1) + '-' + day;
-  newPost.body = marked($('#body').val());
-
-}
+  if(month < 10){
+    month = '0'+ (month);
+  };
+  return date.getFullYear() + '-' + month + '-' + day;
+};
 
 newPost.previewArticle = function() {
   var source = $('#articleTemplate').html();
   var template = Handlebars.compile(source);
   var compiledHtml = template(newPost);
   $('#preview').append(compiledHtml);
-
-
-};
-
-newPost.jsonView = function() {
   $('#jsonView').text(JSON.stringify(newPost)).show();
-
-
 };
 
-/*JSON.parse(window.localStorage.getItem('newArticle')) */
 $(function(){
   newPost.formProcess();
 });
