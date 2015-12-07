@@ -12,6 +12,8 @@ newPost.formProcess = function( ) {
 
     newPost.publishedOn = newPost.dateString();
     newPost.body = marked($('#body').val());
+    hljs.configure({useBR: true});
+
 
     //clear input elements
     $('#submitPost').each(function() {
@@ -42,9 +44,15 @@ newPost.dateString = function() {
 newPost.previewArticle = function() {
   var source = $('#articleTemplate').html();
   var template = Handlebars.compile(source);
+  $('#jsonView').text(JSON.stringify(newPost)).show();
+
   var compiledHtml = template(newPost);
   $('#preview').append(compiledHtml);
-  $('#jsonView').text(JSON.stringify(newPost)).show();
+  hljs.initHighlighting();
+  $('code').each(function(i, block){
+    hljs.highlightBlock(block);
+  });
+
 };
 
 $(function(){
