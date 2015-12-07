@@ -16,6 +16,8 @@ util.articleTab = function () {
   $('ul').on('click', '.article-tab', function(event){
     event.preventDefault();
     $('article').show();
+    $('.author-filter').children().removeAttr('selected');
+    $('.category-filter').children().removeAttr('selected');
     $('.about-section').hide();
 
   });

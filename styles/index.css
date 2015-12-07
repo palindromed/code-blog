@@ -1,6 +1,6 @@
 /*Desktop-Laptop view styles for navbar */
 @media screen and (min-width: 500px){
-   .nav-tab{
+   .nav-tab {
      padding: 14px 16px;
     list-style: none;
     overflow: hidden;
