@@ -1,10 +1,3 @@
-article {
-  overflow: auto;
-}
-img {
-  max-width: 100%;
-  max-height: 100%;
-}
 /*Desktop-Laptop view styles for navbar */
 @media screen and (min-width: 500px){
    .nav-tab{

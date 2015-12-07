@@ -1,0 +1,52 @@
+var newPost = {};
+
+newPost.formProcess = function( ) {
+  $('#jsonView').hide();
+  $('#submitPost').submit(function(event) {
+    event.preventDefault();
+    //populate newPost object
+    newPost.title = $('#title').val();
+    newPost.category = $('#category').val();
+    newPost.author = $('#author').val();
+    newPost.authorUrl = $('#authorUrl').val();
+
+    newPost.publishedOn = newPost.dateString();
+    newPost.body = marked($('#body').val());
+
+    //clear input elements
+    $('#submitPost').each(function() {
+      this.reset();
+    });
+
+    //save object to local storage
+    localStorage.setItem('newArticle', JSON.stringify(newPost));
+
+    newPost.previewArticle();
+    //newPost.jsonView();
+  });
+};
+
+newPost.dateString = function() {
+  var date = new Date();
+  var day = date.getDate();
+  var month = date.getMonth() + 1;
+  if(day < 10) {
+    day = '0'+ day;
+  };
+  if(month < 10){
+    month = '0'+ (month);
+  };
+  return date.getFullYear() + '-' + month + '-' + day;
+};
+
+newPost.previewArticle = function() {
+  var source = $('#articleTemplate').html();
+  var template = Handlebars.compile(source);
+  var compiledHtml = template(newPost);
+  $('#preview').append(compiledHtml);
+  $('#jsonView').text(JSON.stringify(newPost)).show();
+};
+
+$(function(){
+  newPost.formProcess();
+});
