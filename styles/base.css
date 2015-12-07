@@ -1,0 +1,18 @@
+/*Base Styling */
+html {
+  max-width: 900px;
+  width: 100%;
+  margin: 25px auto;
+  padding: 15px;
+}
+
+body{
+
+  background-color: #F9E6D5;
+}
+a {
+  color: #A07D7D;
+}
+a:hover{
+  color: #D3C6C6;
+}
