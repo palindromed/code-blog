@@ -2,9 +2,9 @@ var newPost = {};
 
 newPost.formProcess = function( ) {
   $('#jsonView').hide();
-  $('#submitPost').submit(function(event) {
+  $('#submitPost').on('submit', function(event) {
     event.preventDefault();
-    //populate newPost object
+    //populate newPost object Try running through article constructor
     newPost.title = $('#title').val();
     newPost.category = $('#category').val();
     newPost.author = $('#author').val();
@@ -24,7 +24,6 @@ newPost.formProcess = function( ) {
     localStorage.setItem('newArticle', JSON.stringify(newPost));
 
     newPost.previewArticle();
-    //newPost.jsonView();
   });
 };
 
@@ -47,8 +46,8 @@ newPost.previewArticle = function() {
   $('#jsonView').text(JSON.stringify(newPost)).show();
 
   var compiledHtml = template(newPost);
-  $('#preview').append(compiledHtml);
-  hljs.initHighlighting();
+  $('#preview').html(compiledHtml);
+
   $('code').each(function(i, block){
     hljs.highlightBlock(block);
   });
