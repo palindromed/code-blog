@@ -4,13 +4,13 @@ input{
 }
 textarea{
   width: 100%;
-  height: 40em;
+  height: 35em;
 }
-.savePost{
-  width: 30%;
-  height: 100%;
+#savePost{
+  width: 20%;
+  height: 10em;
+  padding: 5em;
 
-  padding: 3em;
 }
 input[type=text]:focus,
 textarea:focus {
