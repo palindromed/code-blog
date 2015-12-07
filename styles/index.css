@@ -7,10 +7,12 @@
     border: 1px solid #555;
     background-color: #D3CCC6;
   }
+
   .tab {
       display: inline;
       color: #A07D7D;
       text-align: left;
       padding: 14px 16px;
   }
+  
 }
