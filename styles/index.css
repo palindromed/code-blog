@@ -1,9 +1,15 @@
 /*Base Styling */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 html {
   max-width: 900px;
   width: 100%;
   margin: 25px auto;
-  padding: 15px;
+  padding: 15px 10%;
 }
 
 body{
@@ -23,8 +29,25 @@ img {
 article {
   overflow: auto;
 }
-
-
+input{
+  width: 100%;
+  height: 4em;
+}
+textarea{
+  width: 100%;
+  height: 40em;
+}
+.savePost{
+  width: 30%;
+  height: 100%;
+  
+  padding: 3em;
+}
+input[type=text]:focus,
+textarea:focus {
+  outline: 0;
+  border-color: #4697e4;
+}
 
 
 
