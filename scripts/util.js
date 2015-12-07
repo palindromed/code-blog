@@ -15,7 +15,7 @@ util.aboutTab = function(){
 util.articleTab = function () {
   $('ul').on('click', '.article-tab', function(event){
     event.preventDefault();
-    $('main').show();
+    $('article').show();
     $('.about-section').hide();
 
   });
