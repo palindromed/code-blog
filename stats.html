@@ -16,14 +16,6 @@
       <p>Blog About Lots of Things</p>
 
           <ul class="nav-tab">
-            <li data-content="articles" class="article-tab tab">
-              <i class="fa fa-book"></i>
-              <a href="#">Articles</a>
-            </li>
-            <li class="about-tab tab">
-              <i class="fa fa-user"></i>
-              <a href="#" >About</a>
-            </li>
             <li  class="tab">
               <i class="fa fa-twitter"></i>
               <a href="http://www.twitter.com/hannah_krager">Twitter</a>
@@ -35,42 +27,14 @@
           </ul>
 
     </header>
-    <section class="about-section">
-      <h5>Hannah Krager</h5>
-      <ul>
-        <li>All the Python</li>
-        <li>The Doctors Who</li>
-      </ul>
-    </section>
+
     <main class="main">
-      <section class="author-filter-attach">
-      <script id="author-filter-template" type="text/x-handlebars-template">
+      <section id="stats-attach">
+        <h4 id="num-articles"></h4>
 
-        <select class="author-filter" name="author-filter">
-
-        <option value="author-options">Select By Author</option>
-          {{#each rawData}}
-        <option class=""+ {{authorSlug}} +"">{{author}}</option>
-          {{/each}}
-      </select>
-    </script>
-    </section>
+      </section>
 
 
-      <section class="category-filter-attach">
-      <script id="category-filter-template" type="text/x-handlebars-template">
-      <select class="category-filter" name="category-filter">
-        <option value="option">Select By Category</option>
-        {{#each rawData}}
-      <option class="">{{category}}</option>
-        {{/each}}
-    </select>
-  </script>
-</section>
-
-<section id="preview">
-
-</section>
 
 
 

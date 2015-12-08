@@ -4,7 +4,7 @@ var blog = {};
 
 blog.getArticles = function(){
 
-$.ajax({
+  $.ajax({
     url: 'scripts/blogArticles.js',
     type: 'GET',
     dataType: 'text',
