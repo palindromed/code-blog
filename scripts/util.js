@@ -59,6 +59,7 @@ util.filterViewByCategory = function () {
 $(function(){
   util.aboutTab();
   util.articleTab();
+  
   //util.filterViewByAuthor();
   //util.filterViewByCategory();
 });
