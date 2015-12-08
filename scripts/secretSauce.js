@@ -4,7 +4,7 @@ newPost.formProcess = function( ) {
   $('#jsonView').hide();
   $('#submitPost').submit(function(event) {
     event.preventDefault();
-  
+
     newPost.title = $('#title').val();
     newPost.category = $('#category').val();
     newPost.author = $('#author').val();
@@ -41,8 +41,6 @@ newPost.previewArticle = function() {
 
   $.get('/views/articleTemplate.hbs')
     .done(function(data){
-      console.log(arguments);
-      console.log(fluffy);
       var template = fluffy.template(data);
       var compiledHtml = template(fluffy);
       $('#preview').append(compiledHtml);

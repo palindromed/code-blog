@@ -2,10 +2,23 @@
 
 var blog = {};
 
+blog.getArticles = function(){
+
+  //localStorage.Articles = JSON.stringify(blog.rawData);
+
+  blog.rawData = JSON.parse(localStorage.getItem('Articles'));
+
+
+};
+
+
 blog.makePosts = function(){
+
+
   for(var i=0; i < blog.rawData.length; i++){
-    blog.sortArticles();
+    //blog.sortArticles();
     var post = blog.rawData[i];
+
     post.daysBetween = blog.dateDiff(post.publishedOn);
     post.authorSlug = blog.slugify(post.author);
     blog.toHtml(post);
@@ -53,7 +66,9 @@ blog.truncateArticles = function () {
 };
 
 
+
 $(function () {
+  blog.getArticles();
   blog.makePosts();
 
 });
