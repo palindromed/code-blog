@@ -72,30 +72,6 @@
 
 
 
-
-      <script id="articleTemplate" type="text/x-handlebars-template">
-{{#each rawData}}
-
-      <article>
-
-        <span> {{authorSlug}}</span>
-        <h1 class="title">{{title}}</h1>
-        <h5  >By <a href=""+ {{authorUrl}}+"">{{author}}</a> about {{daysBetween}} days ago</h5>
-        <h6 class=category>{{category}}</h6>
-        <section class="body">{{{body}}}</section>
-         <a href="#" class="read-on">Read On</a>
-
-      </article>
-
-          {{/each}}
-        <div class="content-placeholder">  </div>
-
-      </script>
-
-
-
-
-
     </main>
     <footer>
 
@@ -105,9 +81,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src=" https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
   <script type="text/javascript"  src="scripts/blog.js"></script>
+  <script type="text/x-handlebars-template" src="/views/articleTemplate.hbs"></script>
   <script type="text/javascript"  src="scripts/article.js"></script>
   <script type="text/javascript" src="scripts/blogArticles.js"></script>
   <script type="text/javascript" src="scripts/util.js"></script>
+  <script type="text/javascript" src="scripts/secretSauce.js">
+
+  </script>
 
 
 </html>

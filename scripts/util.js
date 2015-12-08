@@ -16,12 +16,13 @@ util.articleTab = function () {
   $('ul').on('click', '.article-tab', function(event){
     event.preventDefault();
     $('main').show();
+    $('article').show();
     $('.author-filter').children().removeAttr('selected');
     $('.category-filter').children().removeAttr('selected');
     $('.about-section').hide();
 
   });
-};
+};/*
 util.filterViewByAuthor = function () {
 
   var source = $('#author-filter-template').html();
@@ -54,9 +55,10 @@ util.filterViewByCategory = function () {
   });
 
 };
+*/
 $(function(){
   util.aboutTab();
   util.articleTab();
-  util.filterViewByAuthor();
-  util.filterViewByCategory();
+  //util.filterViewByAuthor();
+  //util.filterViewByCategory();
 });

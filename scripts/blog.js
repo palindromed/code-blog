@@ -8,9 +8,11 @@ blog.makePosts = function(){
     var post = blog.rawData[i];
     post.daysBetween = blog.dateDiff(post.publishedOn);
     post.authorSlug = blog.slugify(post.author);
-    new Article(post);
+    post = new Article(post);
+    //post.template();
+
   }
-  blog.toHtml();
+  //blog.toHtml();
 };
 
 blog.slugify = function (string) {
@@ -30,7 +32,7 @@ blog.sortArticles = function () {
   });
 };
 
-
+/*
 blog.toHtml = function () {
   var source = $('#articleTemplate').html();
   var template = Handlebars.compile(source);
@@ -38,7 +40,7 @@ blog.toHtml = function () {
   $('main').append(compiledHtml);
 };
 
-
+*/
 blog.truncateArticles = function () {
   $('span').hide();
   $('article section p:not(:first-child)').hide();
