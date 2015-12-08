@@ -4,9 +4,28 @@ var blog = {};
 
 blog.getArticles = function(){
 
-  //localStorage.Articles = JSON.stringify(blog.rawData);
+$.ajax({
+    url: 'scripts/blogArticles.js',
+    type: 'GET',
+    dataType: 'text',
+    ifModified:true,
+    success: function(data, textStatus, jqXHR){
+      if(jqXHR.status === 200){
+        console.log('Got a good request');
+        console.log(typeof data);
+        localStorage.Articles = JSON.stringify(eval(data));
+        blog.rawData = JSON.parse(localStorage.getItem('Articles'));
+        blog.makePosts();
+        console.log(typeof blog.rawData);
 
-  blog.rawData = JSON.parse(localStorage.getItem('Articles'));
+      } else {
+        console.log('Hey, a 304 request');
+      }
+
+      console.log('Data: ' + data);
+    }
+  });
+
 
 
 };
@@ -69,6 +88,6 @@ blog.truncateArticles = function () {
 
 $(function () {
   blog.getArticles();
-  blog.makePosts();
+
 
 });
