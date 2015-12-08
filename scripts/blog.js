@@ -8,7 +8,7 @@ $.ajax({
     url: 'scripts/blogArticles.js',
     type: 'GET',
     dataType: 'text',
-    ifModified:true,
+    ifModified: true,
     success: function(data, textStatus, jqXHR){
       if(jqXHR.status === 200){
         console.log('We are status 200');
