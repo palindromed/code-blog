@@ -11,31 +11,22 @@ $.ajax({
     ifModified:true,
     success: function(data, textStatus, jqXHR){
       if(jqXHR.status === 200){
-        console.log('Got a good request');
-        console.log(typeof data);
+        console.log('We are status 200');
         localStorage.Articles = JSON.stringify(eval(data));
         blog.rawData = JSON.parse(localStorage.getItem('Articles'));
-        blog.makePosts();
-        console.log(typeof blog.rawData);
-
       } else {
-        console.log('Hey, a 304 request');
+        console.log('Not status 200: ' + textStatus);
       }
-
-      console.log('Data: ' + data);
+      blog.makePosts();
     }
   });
-
-
-
 };
 
 
 blog.makePosts = function(){
 
-
   for(var i=0; i < blog.rawData.length; i++){
-    //blog.sortArticles();
+    blog.sortArticles();
     var post = blog.rawData[i];
 
     post.daysBetween = blog.dateDiff(post.publishedOn);
@@ -71,6 +62,7 @@ blog.toHtml = function(props) {
       var compiledHtml = template(fluffy);
       $('#preview').append(compiledHtml);
       blog.truncateArticles();
+
     });
 };
 

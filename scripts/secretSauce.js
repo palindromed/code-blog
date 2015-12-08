@@ -52,4 +52,5 @@ newPost.previewArticle = function() {
 
 $(function(){
   newPost.formProcess();
+  
 });
