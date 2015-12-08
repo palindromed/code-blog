@@ -2,15 +2,39 @@
 
 var blog = {};
 
+blog.getArticles = function(){
+
+$.ajax({
+    url: 'scripts/blogArticles.js',
+    type: 'GET',
+    dataType: 'text',
+    ifModified: true,
+    success: function(data, textStatus, jqXHR){
+      if(jqXHR.status === 200){
+        var eTag = jqXHR.getResponseHeader('ETag');
+        console.log('We are status 200');
+        localStorage.Articles = JSON.stringify(eval(data));
+        blog.rawData = JSON.parse(localStorage.getItem('Articles'));
+      } else {
+        console.log('Not status 200: ' + textStatus);
+      }
+      blog.makePosts();
+    }
+  });
+};
+
+
 blog.makePosts = function(){
+
   for(var i=0; i < blog.rawData.length; i++){
     blog.sortArticles();
     var post = blog.rawData[i];
+
     post.daysBetween = blog.dateDiff(post.publishedOn);
     post.authorSlug = blog.slugify(post.author);
-    new Article(post);
-  }
-  blog.toHtml();
+    blog.toHtml(post);
+  };
+
 };
 
 blog.slugify = function (string) {
@@ -30,14 +54,18 @@ blog.sortArticles = function () {
   });
 };
 
+blog.toHtml = function(props) {
+  var fluffy = new Article(props);
 
-blog.toHtml = function () {
-  var source = $('#articleTemplate').html();
-  var template = Handlebars.compile(source);
-  var compiledHtml = template(blog);
-  $('main').append(compiledHtml);
+  $.get('/views/articleTemplate.hbs')
+    .done(function(data){
+      var template = fluffy.template(data);
+      var compiledHtml = template(fluffy);
+      $('#preview').append(compiledHtml);
+      blog.truncateArticles();
+
+    });
 };
-
 
 blog.truncateArticles = function () {
   $('span').hide();
@@ -52,9 +80,7 @@ blog.truncateArticles = function () {
 
 
 $(function () {
-  blog.makePosts();
-  blog.truncateArticles();
-
+  blog.getArticles();
 
 
 });

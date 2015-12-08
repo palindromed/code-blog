@@ -10,3 +10,7 @@ var Article = function(props){
   this.category = props.category;
   this.authorSlug = props.authorSlug;
 };
+
+Article.prototype.template = function(data){
+  return Handlebars.compile(data);
+};

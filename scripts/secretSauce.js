@@ -4,7 +4,7 @@ newPost.formProcess = function( ) {
   $('#jsonView').hide();
   $('#submitPost').submit(function(event) {
     event.preventDefault();
-    //populate newPost object
+
     newPost.title = $('#title').val();
     newPost.category = $('#category').val();
     newPost.author = $('#author').val();
@@ -13,16 +13,13 @@ newPost.formProcess = function( ) {
     newPost.publishedOn = newPost.dateString();
     newPost.body = marked($('#body').val());
 
-    //clear input elements
     $('#submitPost').each(function() {
       this.reset();
     });
 
-    //save object to local storage
-    localStorage.setItem('newArticle', JSON.stringify(newPost));
 
+    localStorage.setItem('newArticle', JSON.stringify(newPost));
     newPost.previewArticle();
-    //newPost.jsonView();
   });
 };
 
@@ -40,13 +37,20 @@ newPost.dateString = function() {
 };
 
 newPost.previewArticle = function() {
-  var source = $('#articleTemplate').html();
-  var template = Handlebars.compile(source);
-  var compiledHtml = template(newPost);
-  $('#preview').append(compiledHtml);
-  $('#jsonView').text(JSON.stringify(newPost)).show();
+  var fluffy = new Article(newPost);
+
+  $.get('/views/articleTemplate.hbs')
+    .done(function(data){
+      var template = fluffy.template(data);
+      var compiledHtml = template(fluffy);
+      $('#preview').append(compiledHtml);
+      $('#jsonView').text(JSON.stringify(newPost)).show();
+    });
 };
+
+
 
 $(function(){
   newPost.formProcess();
+  
 });
