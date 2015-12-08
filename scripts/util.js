@@ -22,7 +22,12 @@ util.articleTab = function () {
     $('.about-section').hide();
 
   });
-};/*
+};
+
+
+
+
+/*
 util.filterViewByAuthor = function () {
 
   var source = $('#author-filter-template').html();
@@ -60,6 +65,7 @@ $(function(){
   util.aboutTab();
   util.articleTab();
   
+
   //util.filterViewByAuthor();
   //util.filterViewByCategory();
 });

@@ -38,9 +38,9 @@ blog.toHtml = function(props) {
       var template = fluffy.template(data);
       var compiledHtml = template(fluffy);
       $('#preview').append(compiledHtml);
+      blog.truncateArticles();
     });
 };
-
 
 blog.truncateArticles = function () {
   $('span').hide();
@@ -55,9 +55,5 @@ blog.truncateArticles = function () {
 
 $(function () {
   blog.makePosts();
-  blog.truncateArticles();
-
-
-
 
 });
