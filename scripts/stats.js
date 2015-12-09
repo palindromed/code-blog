@@ -1,7 +1,7 @@
 var stats = {};
+stats.letters = [];
 
-
-stats.checkBlog = function() {
+stats.runStats = function() {
   stats.posts = stats.posts || JSON.parse(localStorage.getItem('Articles'));
   stats.articleCount = stats.countArticles();
   stats.stripHtml();
@@ -56,7 +56,7 @@ stats.getAverages = function(num, den){
 };
 
 stats.countLetters = function(wordList){
-  stats.letters = [];
+
   var counter = 0;
   wordList.forEach(function(item){
     counter += item.length;
@@ -95,6 +95,6 @@ stats.renderStats = function(){
 
 };
 $(function(){
-  stats.checkBlog();
+  stats.runStats();
 
 });
