@@ -5,16 +5,26 @@ stats.checkBlog = function() {
   stats.posts = stats.posts || JSON.parse(localStorage.getItem('Articles'));
   stats.articleCount = stats.countArticles();
   stats.stripHtml();
-  stats.totalWords();
-  stats.uniqueAuthor();
+  stats.totalWordCount = stats.reduceArray(stats.words);
+  var totalLetters = stats.reduceArray(stats.letters);
 
-  //stats.getAverages(arg1, arg2);
+  stats.totalAverage = stats.getAverages(stats.totalWordCount, stats.articleCount);
+  stats.averageWordLength = stats.getAverages(totalLetters, stats.totalWordCount);
+  stats.uniqueAuthor();
+  stats.wordLengthForPosts();
 
   stats.renderStats();
 };
 
-stats.totalWords = function(){
-  stats.totalWordCount = stats.words.reduce(function(a, b){
+stats.wordLengthForPosts = function(){
+  stats.posts.map(function(post){
+    post.average = parseFloat(stats.getAverages(post.letterCount, post.wordCount));
+  })
+}
+
+
+stats.reduceArray = function(array1){
+  return array1.reduce(function(a, b){
     return a + b;
   });
 };
@@ -40,17 +50,21 @@ stats.stripHtml = function(){
 };
 
 stats.getAverages = function(num, den){
-  return num / den;
+  return parseFloat(num / den).toFixed(2)
+
 
 };
 
 stats.countLetters = function(wordList){
-
+  stats.letters = [];
   var counter = 0;
   wordList.forEach(function(item){
     counter += item.length;
+
   });
+  stats.letters.push(counter);
   return counter;
+
 };
 
 
@@ -76,7 +90,8 @@ stats.renderStats = function(){
   var compiledHtml = template(stats);
   $('#num-articles').append(compiledHtml);
 
-  $('#num-words').text('Total word count: ' + stats.totalWordCount);
+  $('#num-words').text('Total word count: ' + stats.totalWordCount + ' Average Words per post: '+ stats.totalAverage +
+    'Average word length across all articles: '+ stats.averageWordLength);
 
 };
 $(function(){
