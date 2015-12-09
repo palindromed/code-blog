@@ -25,7 +25,7 @@ util.articleTab = function () {
   });
 };
 
-/*
+
 util.filterViewByAuthor = function () {
 
   setTimeout(function() {
@@ -64,10 +64,10 @@ util.filterViewByCategory = function () {
   });
 
 };
-*/
+
 $(function(){
   util.aboutTab();
   util.articleTab();
-  //util.filterViewByAuthor();
-  //util.filterViewByCategory();
+  util.filterViewByAuthor();
+  util.filterViewByCategory();
 });

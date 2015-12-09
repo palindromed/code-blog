@@ -8,7 +8,17 @@
     <link rel="stylesheet" type="text/css"  href="styles/formStyle.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <title>This is a blog!</title>
+ <script id="wordcount-template" type="text/x-handlebars-template">
+   <section >
 
+
+   {{#each posts}}
+    <h4>AUTHOR:  {{author}}  WORDCOUNT:  {{wordCount}}</h4>
+
+   {{/each}}
+
+    </section>
+ </script>
   </head>
   <body>
     <header>
@@ -30,7 +40,9 @@
 
     <main class="main">
       <section id="stats-attach">
+        <h4 id="num-words"></h4>
         <h4 id="num-articles"></h4>
+
 
       </section>
 
