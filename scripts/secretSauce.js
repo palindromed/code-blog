@@ -5,6 +5,7 @@ newPost.formProcess = function( ) {
   $('#submitPost').on('submit', function(event) {
     event.preventDefault();
     //populate newPost object Try running through article constructor
+
     newPost.title = $('#title').val();
     newPost.category = $('#category').val();
     newPost.author = $('#author').val();
@@ -15,14 +16,12 @@ newPost.formProcess = function( ) {
     hljs.configure({useBR: true});
 
 
-    //clear input elements
     $('#submitPost').each(function() {
       this.reset();
     });
 
-    //save object to local storage
-    localStorage.setItem('newArticle', JSON.stringify(newPost));
 
+    localStorage.setItem('newArticle', JSON.stringify(newPost));
     newPost.previewArticle();
   });
 };
@@ -41,19 +40,23 @@ newPost.dateString = function() {
 };
 
 newPost.previewArticle = function() {
-  var source = $('#articleTemplate').html();
-  var template = Handlebars.compile(source);
-  $('#jsonView').text(JSON.stringify(newPost)).show();
 
-  var compiledHtml = template(newPost);
-  $('#preview').html(compiledHtml);
+  var fluffy = new Article(newPost);
 
-  $('code').each(function(i, block){
-    hljs.highlightBlock(block);
-  });
+  $.get('/views/articleTemplate.hbs')
+    .done(function(data){
+      var template = fluffy.template(data);
+      var compiledHtml = template(fluffy);
+      $('#preview').append(compiledHtml);
+      $('code').each(function(i, block){
+        hljs.highlightBlock(block);
+      });
+      $('#jsonView').text(JSON.stringify(newPost)).show();
+    });
 
 };
 
 $(function(){
   newPost.formProcess();
+
 });
