@@ -5,8 +5,8 @@ stats.runStats = function() {
   stats.posts = stats.posts || JSON.parse(localStorage.getItem('Articles'));
   stats.articleCount = stats.countArticles();
   stats.stripHtml();
-  stats.totalWordCount = stats.reduceArray(stats.words);
-  var totalLetters = stats.reduceArray(stats.letters);
+  stats.totalWordCount = stats.reduceAddArray(stats.words);
+  var totalLetters = stats.reduceAddArray(stats.letters);
 
   stats.totalAverage = stats.getAverages(stats.totalWordCount, stats.articleCount);
   stats.averageWordLength = stats.getAverages(totalLetters, stats.totalWordCount);
@@ -19,11 +19,11 @@ stats.runStats = function() {
 stats.wordLengthForPosts = function(){
   stats.posts.map(function(post){
     post.average = parseFloat(stats.getAverages(post.letterCount, post.wordCount));
-  })
-}
+  });
+};
 
 
-stats.reduceArray = function(array1){
+stats.reduceAddArray = function(array1){
   return array1.reduce(function(a, b){
     return a + b;
   });
@@ -50,7 +50,7 @@ stats.stripHtml = function(){
 };
 
 stats.getAverages = function(num, den){
-  return parseFloat(num / den).toFixed(2)
+  return parseFloat(num / den).toFixed(2);
 
 
 };
