@@ -2,8 +2,9 @@ var newPost = {};
 
 newPost.formProcess = function( ) {
   $('#jsonView').hide();
-  $('#submitPost').submit(function(event) {
+  $('#submitPost').on('submit', function(event) {
     event.preventDefault();
+    //populate newPost object Try running through article constructor
 
     newPost.title = $('#title').val();
     newPost.category = $('#category').val();
@@ -12,6 +13,8 @@ newPost.formProcess = function( ) {
 
     newPost.publishedOn = newPost.dateString();
     newPost.body = marked($('#body').val());
+    hljs.configure({useBR: true});
+
 
     $('#submitPost').each(function() {
       this.reset();
@@ -37,6 +40,7 @@ newPost.dateString = function() {
 };
 
 newPost.previewArticle = function() {
+
   var fluffy = new Article(newPost);
 
   $.get('/views/articleTemplate.hbs')
@@ -44,13 +48,15 @@ newPost.previewArticle = function() {
       var template = fluffy.template(data);
       var compiledHtml = template(fluffy);
       $('#preview').append(compiledHtml);
+      $('code').each(function(i, block){
+        hljs.highlightBlock(block);
+      });
       $('#jsonView').text(JSON.stringify(newPost)).show();
     });
+
 };
-
-
 
 $(function(){
   newPost.formProcess();
-  
+
 });
