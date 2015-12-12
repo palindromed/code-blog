@@ -1,5 +1,5 @@
 /*Desktop-Laptop view styles for navbar */
-@media screen and (min-width: 500px){
+@media screen and (min-width: 500px) {
    .nav-tab {
      padding: 14px 16px;
     list-style: none;
@@ -14,5 +14,5 @@
       text-align: left;
       padding: 14px 16px;
   }
-  
+
 }
