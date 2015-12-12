@@ -12,7 +12,6 @@ blog.getArticles = function(){
     success: function(data, textStatus, jqXHR){
       if(jqXHR.status === 200){
         var eTag = jqXHR.getResponseHeader('ETag');
-        console.log(eTag);
         console.log('We are status 200');
         localStorage.Articles = JSON.stringify(eval(data));
         blog.rawData = JSON.parse(localStorage.getItem('Articles'));

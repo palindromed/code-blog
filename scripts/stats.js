@@ -13,18 +13,19 @@ stats.runStats = function() {
   stats.uniqueAuthor();
   stats.wordLengthForPosts();
 
+
   stats.renderStats();
 };
 
 stats.wordLengthForPosts = function(){
-  stats.posts.map(function(post){
+  stats.posts.map(function getWordLength(post){
     post.average = parseFloat(stats.getAverages(post.letterCount, post.wordCount));
   });
 };
 
 
 stats.reduceAddArray = function(array1){
-  return array1.reduce(function(a, b){
+  return array1.reduce(function reduceAdd(a, b) {
     return a + b;
   });
 };
@@ -35,7 +36,7 @@ stats.countArticles = function() {
 
 stats.stripHtml = function(){
   stats.words = [];
-  stats.posts.forEach(function(value, i){
+  stats.posts.forEach(function noHtml(value, i){
 
     var html = value.body;
     var div = document.createElement('div');
@@ -58,7 +59,7 @@ stats.getAverages = function(num, den){
 stats.countLetters = function(wordList){
 
   var counter = 0;
-  wordList.forEach(function(item){
+  wordList.forEach(function letterForEach(item){
     counter += item.length;
 
   });
@@ -75,7 +76,7 @@ stats.countWords = function(words){
 stats.uniqueAuthor = function() {
   stats.authorNames = [];
 
-  return stats.posts.reduce(function(p, c) {
+  return stats.posts.reduce(function filterAuthors(p, c) {
     if (p.author.indexOf(c) < 0) stats.authorNames.push(c);
     return p;
   });
@@ -83,13 +84,15 @@ stats.uniqueAuthor = function() {
 
 
 stats.renderStats = function(){
+  $('#num-authors').text('Author Count: ' + stats.authorNames.length);
+
   $('#num-articles').text('Article Count: ' + stats.articleCount);
+
 
   var source = $('#wordcount-template').html();
   var template = Handlebars.compile(source);
   var compiledHtml = template(stats);
-  $('#num-articles').append(compiledHtml);
-
+  $('#author-stats').append(compiledHtml);
   $('#num-words').text('Total word count: ' + stats.totalWordCount + ' Average Words per post: '+ stats.totalAverage +
     'Average word length across all articles: '+ stats.averageWordLength);
 
