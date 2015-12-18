@@ -2,72 +2,24 @@
 
 var util = {};
 
-util.aboutTab = function(){
-  $('.about-section').hide();
-
-  $('ul').on('click', '.about-tab', function(event){
-    event.preventDefault();
-    $('main').hide();
-    $('.about-section').fadeIn();
-  });
+util.slug = function(str) {
+  return str.replace(/\W/g, '-');
 };
 
-util.articleTab = function () {
-
-  $('ul').on('click', '.article-tab', function(event){
-    event.preventDefault();
-    $('main').show();
-    $('article').show();
-    $('.author-filter').children().removeAttr('selected');
-    $('.category-filter').children().removeAttr('selected');
-    $('.about-section').hide();
-
-  });
+util.today = function() {
+  return (new Date()).toISOString().slice(0,10);
 };
 
-
-util.filterViewByAuthor = function () {
-
-  setTimeout(function() {
-    var source = $('#author-filter-template').html();
-    var template = Handlebars.compile(source);
-    var compiledHtml = template(blog);
-    $('.author-filter-attach').append(compiledHtml);
-
-
-    $('.author-filter').change(function() {
-      $('article').show();
-      $('.category-filter').children().removeAttr('selected');
-      var $selectedAuthor = $('.author-filter option:selected').val();
-      var slugSelected = blog.slugify($selectedAuthor);
-      $('span:not(:contains('+ slugSelected +'))').parent().hide();
-    });
-  });
+util.getParameterByKey = function (key) {
+  //Return a value stored in a given key from browser query string.
+  var match = RegExp('[?&]' + key + '=([^&]*)').exec(window.location.search);
+  return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 };
 
-util.filterViewByCategory = function () {
-  setTimeout(function() {
-    var source = $('#category-filter-template').html();
-    var template = Handlebars.compile(source);
-    var compiledHtml = template(blog);
-    $('.category-filter-attach').html(compiledHtml);
-
-
-    $('.category-filter').change(function(){
-      console.log('filter function called');
-      console.log($('.category-filter option:selected').val());
-      $('article').show();
-      $('.author-filter').children().removeAttr('selected');
-      var selectedCategory = $('.category-filter option:selected').val();
-      $('article h6:not(:contains('+ selectedCategory+'))').parent().hide();
-    });
-  });
-
-};
-
-$(function(){
-  util.aboutTab();
-  util.articleTab();
-  util.filterViewByAuthor();
-  util.filterViewByCategory();
+Handlebars.registerHelper('if_admin', function (block) {
+  var admin = util.getParameterByKey('admin');
+  if (admin === 'true') {
+    return block.fn(this);
+  }
+  return block.inverse(this);
 });
