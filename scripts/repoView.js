@@ -11,14 +11,14 @@ repoView.index = function() {
 
   repos.all.filter(function(repo){
     //TODO: How would you like to filter the repos?
-    return !repo.fork
+    return !repo.fork;
   })
   .forEach(_append);
 };
 
 repoView.render = function(repo) {
   //TODO: How would you like to render this?
-  return $('<li>').text(repo.full_name)
+  return $('<li>').text(repo.full_name);
 };
 
 repoView.ui = function() {

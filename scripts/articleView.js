@@ -13,7 +13,7 @@ articleView.index = function() {
   if (articleView.template) {
     _renderAll();
   } else {
-    $.get('/templates/article.html', function(data, msg, xhr) {
+    $.get('/views/article.html', function(data, msg, xhr) {
       articleView.template = Handlebars.compile(data);
       _renderAll();
     });

@@ -1,20 +1,5 @@
 'use strict';
 
-var Article = function(props){
-  this.author = props.author;
-  this.title = props.title;
-  this.body = props.body;
-  this.publishedOn = props.publishedOn;
-  this.authorUrl = props.authorUrl;
-  this.daysBetween = props.daysBetween;
-  this.category = props.category;
-  this.authorSlug = props.authorSlug;
-};
-
-Article.prototype.template = function(data){
-  return Handlebars.compile(data);
-};
-
 function Article (opts) {
   Object.keys(opts).forEach(function(e, index, keys) {
     this[e] = opts[e];
