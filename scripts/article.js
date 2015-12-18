@@ -63,7 +63,7 @@ Article.loadAll = function(callback) {
   var callback = callback || function() {};
 
   if (Article.all.length === 0) {
-    webDB.execute('SELECT * FROM articles ORDER BY publishedOn;',
+    webDB.execute('SELECT * FROM articles ORDER BY publishedOn DESC;',
       function(rows) {
         if (rows.length === 0) {
           // Request data from server, then try loading from db again:
