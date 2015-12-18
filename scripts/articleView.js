@@ -32,3 +32,17 @@ articleView.render = function(article) {
 
   return articleView.template(article);
 };
+
+articleView.handleFilter = function(){
+  $('#category').on('change', function(){
+    page('/category/'+ $(this).val());
+  });
+};
+
+
+
+articleView.show = function(articles){
+  //make a render function that takes argument of articles.
+  articleView.index(articles);
+
+};

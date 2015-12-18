@@ -5,22 +5,20 @@ articleController.index = function() {
 };
 
 articleController.category = function(ctx, next) {
+  //Article.loadAll(function(){}) wrap around categoryData??
   var categoryData = function(data){
-    console.log('in categoryData callback');
-    console.log(data);
     ctx.articles = data;
     next();
   };
-
   Article.findByCategory(ctx.params.category, categoryData);
-  console.log(ctx);
 };
 
 articleController.author = function(ctx, next) {
   console.log(ctx);
 };
 
-articleController.show = function(ctx, next) {
+articleController.show = function(ctx) {
   //show action
   console.log(ctx);
+  articleView.show(ctx.articles);
 };
