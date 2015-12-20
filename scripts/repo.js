@@ -7,7 +7,7 @@ repos.requestAll = function(callback){
   $.ajax({
     type: 'GET',
     url: 'https://api.github.com/user/repos?sort=updated',
-    headers: {Authorization: githubToken }
+    headers: {Authorization: 'token ' + githubToken }
   }).done(function(data){
     repos.all = data;
   }).done(callback);
