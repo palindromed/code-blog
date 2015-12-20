@@ -46,3 +46,6 @@ articleView.show = function(articles){
   articleView.index(articles);
 
 };
+
+
+/*get blog, empty, append chosen articles SIDE-populate category and author filters*/
