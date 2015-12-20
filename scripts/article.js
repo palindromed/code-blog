@@ -13,8 +13,8 @@ Article.prototype.insertRecord = function(callback) {
   webDB.execute(
     [
       {
-        'sql': 'INSERT INTO articles (title, author, authorUrl, category, publishedOn, markdown) VALUES (?, ?, ?, ?, ?, ?);',
-        'data': [this.title, this.author, this.authorUrl, this.category, this.publishedOn, this.markdown],
+        'sql': 'INSERT INTO articles (title, author, authorUrl, category, publishedOn, body) VALUES (?, ?, ?, ?, ?, ?);',
+        'data': [this.title, this.author, this.authorUrl, this.category, this.publishedOn, this.body],
       }
     ],
     callback
@@ -26,8 +26,8 @@ Article.prototype.updateRecord = function(callback) {
   webDB.execute(
     [
       {
-        'sql': 'UPDATE articles SET title = ?, author = ?, authorUrl = ?, category = ?, publishedOn = ?, markdown = ? WHERE id = ?;',
-        'data': [this.title, this.author, this.authorUrl, this.category, this.publishedOn, this.markdown, this.id]
+        'sql': 'UPDATE articles SET title = ?, author = ?, authorUrl = ?, category = ?, publishedOn = ?, body = ? WHERE id = ?;',
+        'data': [this.title, this.author, this.authorUrl, this.category, this.publishedOn, this.body, this.id]
       }
     ],
     callback
