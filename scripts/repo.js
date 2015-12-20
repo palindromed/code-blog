@@ -6,7 +6,7 @@ repos.requestAll = function(callback){
 
   $.ajax({
     type: 'GET',
-    url: '/github/users/palindromed/repos?sort=updated',
+    url: '/user/repos?sort=updated',
 
   }).done(function(data){
     repos.all = data;
