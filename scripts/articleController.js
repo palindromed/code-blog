@@ -5,20 +5,25 @@ articleController.index = function() {
 };
 
 articleController.category = function(ctx, next) {
-  //Article.loadAll(function(){}) wrap around categoryData??
-  var categoryData = function(data){
-    ctx.articles = data;
-    next();
-  };
-  Article.findByCategory(ctx.params.category, categoryData);
+  Article.loadAll(function() {
+    var categoryData = function(articles) {
+      ctx.articles = articles;
+      next();
+    };
+    Article.findByCategory(ctx.params.category, categoryData);
+  });
 };
 
 articleController.author = function(ctx, next) {
-  console.log(ctx);
+  Article.loadAll(function() {
+    var authorData = function(data) {
+      ctx.articles = data;
+      next();
+    };
+    Article.findByAuthor(ctx.params.author, authorData);
+  });
 };
 
 articleController.show = function(ctx) {
-  //show action
-  console.log(ctx);
   articleView.show(ctx.articles);
 };
