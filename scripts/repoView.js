@@ -2,7 +2,8 @@
 
 var repoView = {};
 
-repoView.index = function() {
+repoView.index = function(data) {
+  repos.all = data;
   repoView.ui();
 
   var _append = function(repo) {
